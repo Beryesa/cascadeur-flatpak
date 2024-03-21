@@ -1,0 +1,8 @@
+venv/
+build-dir/
+.flatpak-builder/
+.flatpak/
+cascadeur-linux/
+Cascadeur.png
+notes.md
+.vscode

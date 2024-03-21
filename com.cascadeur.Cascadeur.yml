@@ -1,0 +1,47 @@
+id: com.cascadeur.Cascadeur
+runtime: org.kde.Platform
+runtime-version: '6.6'
+sdk: org.kde.Sdk
+command: cascadeur
+finish-args:
+  - --share=ipc
+  - --socket=wayland # breaks qt    
+  - --socket=fallback-x11
+  - --device=dri
+  - --share=network
+  - --filesystem=xdg-documents
+modules:
+  - name: cascadeur
+    buildsystem: simple
+    build-commands:
+      - mkdir /app/cascadeur
+      - install -Dm755 cascadeur.sh /app/bin/cascadeur
+      - install -Dm644 com.cascadeur.Cascadeur.desktop /app/share/applications/$FLATPAK_ID.desktop
+      - install -Dm644 com.cascadeur.Cascadeur.png /app/share/icons/hicolor/scalable/apps/$FLATPAK_ID.png
+      - 'find lib/ -name \*.so -exec chmod u+w {} \;'
+      - cp -r ./* /app/cascadeur
+    sources:
+      - type: dir
+        path: cascadeur-linux
+      - type: script
+        commands:
+          - cd /app/cascadeur
+          - exec ./cascadeur "$@"
+        dest-filename: cascadeur.sh
+      - type: file
+        path: com.cascadeur.Cascadeur.png
+      - type: file
+        path: com.cascadeur.Cascadeur.desktop
+
+  - modules/python3-pyside6.json
+  - modules/python3-numpy.json
+  - modules/python3-usd.json
+  - modules/krb5.json
+  - modules/10-mbedtls.json
+  - modules/20-aom.json
+  - modules/20-librist.json
+  - modules/20-nv-codec.json
+  - modules/20-srt.json
+  - modules/20-svt-av1.json
+  - modules/20-x264.json
+  - modules/30-ffmpeg.json

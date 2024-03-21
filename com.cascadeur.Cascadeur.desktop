@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Cascadeur
+GenericName=Standalone 3D Animation Software
+Comment=Create and edit 3D Animations
+Keywords=animation;3d;cascadeur;ai;
+Type=Application
+Categories=Graphics;
+Icon=com.cascadeur.Cascadeur.png
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=cascadeur --file-forwarding com.cascadeur.Cascadeur %F
+Terminal=false
+StartupNotify=true
+StartupWMClass=Cascadeur

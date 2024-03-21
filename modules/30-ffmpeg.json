@@ -1,0 +1,40 @@
+{
+    "name": "ffmpeg",
+    "config-opts": [
+        "--enable-gpl",
+        "--enable-shared",
+        "--disable-static",
+        "--enable-gnutls",
+        "--disable-doc",
+        "--disable-programs",
+        "--disable-devices",
+        "--enable-libopus",
+        "--enable-libvpx",
+        "--enable-libvorbis",
+        "--enable-libx264",
+        "--enable-nvenc",
+        "--enable-libsrt",
+        "--enable-librist",
+        "--enable-libaom",
+        "--enable-libsvtav1"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/ffmpeg/examples"
+    ],
+    "sources": [
+        {
+            "type": "archive",
+            "url": "https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz",
+            "sha256": "8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968",
+            "x-checker-data": {
+                "type": "anitya",
+                "project-id": 5405,
+                "stable-only": true,
+                "url-template": "https://ffmpeg.org/releases/ffmpeg-$version.tar.xz",
+                "is-important": true
+            }
+        }
+    ]
+}
